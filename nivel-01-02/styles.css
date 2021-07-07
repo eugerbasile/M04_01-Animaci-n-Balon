@@ -1,0 +1,143 @@
+body {
+  background: black;
+  display: flex;
+  justify-content: center;
+}
+
+.principal {
+  height: 100vh;
+  width: 800px;
+  background: white;
+  /*Relative es para poder superponer posiciones absolutas arriba de este div*/
+  position: relative;
+  /*La propiedad CSS z-index indica el orden de un elemento posicionado y sus descendientes. Cuando varios elementos se superponen, los elementos con mayor valor z-index cubren aquellos con menor valor.*/
+  z-index: 1;
+}
+
+.contenedor {
+  z-index: 1;
+  height: 690px;
+  width: 770px;
+  background: white;
+  border: 5px solid black;
+  margin-top: 10px;
+  margin-left: 10px;
+  position: relative;
+}
+
+.pelota {
+  position: relative;
+  /*creo la pelota*/
+  top: 0px;
+  left: 0px;
+  width: 100px;
+  height: 100px;
+  background: greenyellow;
+  /*border radius es para hacer un circulo*/
+  border-radius: 50%;
+  /*La propiedad overflow permite regular la visiblidad de los contenidos que sobresalen de una caja html.
+  hidden contiene los elemento en la caja y no sobresalen*/
+  overflow: hidden;
+
+  /*ANIMACION*
+
+  La propiedad animation de CSS es una propiedad abreviada (shorthand property) para animation-name, animation-duration, animation-timing-function, animation-delay, animation-iteration-count y animation-direction.
+ */
+
+  animation: vertical-movement 2s linear infinite alternate-reverse,
+    horizontal-movement 9s linear infinite alternate-reverse;
+
+  /*
+  definimos nombre de animacion 
+  animation-name: vertical-movement;
+  duracion
+  animation-duration: 9s;
+  delay es para que se demore en arrancar
+  animation-delay: 0s;
+  cuantas veces se va a ejecutar
+  animation-iteration-count: 2;
+  Animation direction especifica si una animación debe reproducirse hacia adelante, hacia atrás o en ciclos alternos.
+  animation-direction: alternate;
+  animation-timing-functionpropiedad especifica la curva de velocidad de la animación.
+  animation-timing-function: linear;
+  genera movimiento*/
+}
+
+/*before lo utilizamos para establecer propiedades que apareceran antes del contenido del elemento seleccionado lo utilizamos con conetent para que se muestren las propiedades que estamos aplicando 
+
+Los pseudo-elementos ::before y ::after insertan contenido, mediante CSS, delante ( before ) y respectivamente detrás ( after ) del contenido de un elemento html. Los pseudo-elementos tienen que tener un contenido aunque sea solo una cadena de texto vacía.*/
+
+.pelota::before {
+  /*La propiedad content tiene que estar siempre, para que los pseudoelementos sean visibles*/
+  content: "";
+  /*position absolute hace que se superpongan los div*/
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  right: 60px;
+  /*border radius es para que sea circulo*/
+  border-radius: 50%;
+  /*box-sizing es para que mantenga el tamaño que puse y no se modifique por los border, margin y padding*/
+  box-sizing: border-box;
+  background: transparent;
+  border: 5px solid white;
+  /* left: -65%;*/
+  /*Filter es para darle un desenfoque*/
+  filter: blur(1px);
+}
+
+.pelota::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  right: -60px;
+  border-radius: 50%;
+  /*transform: rotate(-90deg);*/
+  box-sizing: border-box;
+  /*fondo trasnparente para que quede solo la linea*/
+  background: transparent;
+  border: 5px solid white;
+  /* right: -65%;*/
+  /*Filter es para darle un desenfoque*/
+  filter: blur(1px);
+}
+
+/*definimos el comportamiento de la animacion*/
+@keyframes vertical-movement {
+  0% {
+    /*El padding lo usamos para generar la deformacion*/
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  50% {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    /*hacemos un traslado en direccion del eje Y para generar el rebote*/
+    transform: translateY(540px);
+  }
+
+  100% {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+@keyframes horizontal-movement {
+  /*empieza desde arriba a la izquierda*/
+  0% {
+    top: 0%;
+    left: 0%;
+  }
+  /*voy trasladando la pelota hacia la derecha y abajo */
+  50% {
+    top: 40px;
+    left: 680px;
+  }
+
+  100% {
+    /*vuelve la posicion inicial*/
+    top: 0%;
+    left: 0%;
+  }
+}

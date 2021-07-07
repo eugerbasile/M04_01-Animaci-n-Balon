@@ -1,0 +1,279 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  /*box-sizin: Border box es para que las cajas no se desborden una con otra*/
+  box-sizing: border-box;
+}
+
+.padre {
+  display: flex;
+  /*flex flow es una abrebiatura de flex direction y flex wrap, juntas definen ejes horizontales y verticales*/
+  /*ROW es fila y NOWRAP es para que queden en una misma fila */
+  flex-flow: row nowrap;
+
+  background-color: white;
+  /*Pongo tamaño a etiqueta padre para luego con el display flex distribuyo en ctamaño igual cada caja*/
+  width: 1535px;
+  height: 750px;
+}
+
+/*CARACTERISTICAS DE CADA CAJA*/
+.caja1 {
+  display: flex;
+
+  background: rgb(71, 89, 138);
+  /*Centro el contenido horizontalmente*/
+  justify-content: center;
+  border: 2px solid white;
+  flex: 1 1 20%;
+  /*Centro el contenido verticalmente*/
+  align-items: center;
+  /*posicion relativa es para poner las capas de after y before*/
+  position: relative;
+  /*overflow es para que las capas de after y before se recorten y queden contenidas dentro de la div correspondiente*/
+  overflow: hidden;
+  /*transition  permiten cambiar los valores de propiedad sin problemas, durante un período determinado.*/
+  transition: transform 1s;
+}
+
+/*LAYOUT AFTER Y BEFORE */
+
+.caja1:before {
+  /*La propiedad content tiene que estar siempre, para que los pseudoelementos sean visibles*/
+  content: "";
+  /*posicion absoluta es para poner las capas arriba de la caja padre*/
+  position: absolute;
+  background: rgb(123, 140, 187);
+  opacity: 0.1;
+  width: 265px;
+  height: 1000px;
+  transform: rotate(-30deg);
+  margin-bottom: 20px;
+  transition: transform 1s;
+}
+.caja1:after {
+  content: "";
+  position: absolute;
+  background: rgb(123, 140, 187);
+  opacity: 0.1;
+  width: 265px;
+  height: 1000px;
+  transform: rotate(-30deg);
+  margin-bottom: 20px;
+  transition: transform 1s;
+}
+
+/*EFECTO HOVER*/
+.caja1:hover:before,
+.caja1:hover:after {
+  background-color: rgb(123, 140, 187);
+  transform: rotate(0deg) scale(1.5);
+}
+
+/*CARACTERISTICAS DE CADA CAJA*/
+.caja2 {
+  display: flex;
+
+  background: rgb(71, 197, 197);
+  justify-content: center;
+  border: 2px solid white;
+  /*flex es una abrebiatura de flex grow (grow es en cuantos espacios distribuimos en la pantalla, pongo uno ya que lo especifico en cada caja) flex shrink (shrink generalmente no se modifica y queda en 1) y flex basis(basis define el tamaño predeterminado de un elemento antes que ocupe el espacio restante 
+  en este caso quiero que ocupe el 20% de la pantalla*/
+  flex: 1 1 20%;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  /*transition  permiten cambiar los valores de propiedad sin problemas, durante un período determinado.*/
+  transition: transform 1s;
+}
+
+/*LAYOUT AFTER Y BEFORE */
+
+.caja2:before {
+  /*La propiedad content tiene que estar siempre, para que los pseudoelementos sean visibles*/
+  content: "";
+  position: absolute;
+  background: rgb(166, 207, 207);
+  opacity: 0.1;
+  width: 265px;
+  height: 1000px;
+  transform: rotate(-30deg);
+  margin-bottom: 20px;
+  transition: transform 1s;
+}
+.caja2:after {
+  content: "";
+  position: absolute;
+  background: rgb(166, 207, 207);
+  opacity: 0.1;
+  width: 265px;
+  height: 1000px;
+  transform: rotate(-30deg);
+  margin-bottom: 20px;
+  transition: transform 1s;
+}
+
+/*EFECTO HOVER*/
+.caja2:hover:before,
+.caja2:hover:after {
+  background-color: rgb(166, 207, 207);
+  transform: rotate(0deg) scale(1.5);
+}
+
+/*CARACTERISTICAS DE CADA CAJA*/
+.caja3 {
+  display: flex;
+  background: rgb(158, 57, 158);
+
+  justify-content: center;
+  border: 2px solid white;
+  flex: 1 1 20%;
+  align-items: center;
+  position: relative;
+  /*overflow es para que las capas de after y before se recorten y queden contenidas dentro de la div correspondiente*/
+  overflow: hidden;
+  /*transition  permiten cambiar los valores de propiedad sin problemas, durante un período determinado.*/
+  transition: transform 1s;
+}
+
+/*LAYOUT AFTER Y BEFORE */
+
+.caja3::before {
+  /*La propiedad content tiene que estar siempre, para que los pseudoelementos sean visibles*/
+  content: "";
+  position: absolute;
+  background: rgb(177, 120, 177);
+  opacity: 0.1;
+  width: 265px;
+  height: 1000px;
+  transform: rotate(-30deg);
+  margin-bottom: 20px;
+  transition: transform 1s;
+}
+.caja3::after {
+  content: "";
+  position: absolute;
+  background: rgb(177, 120, 177);
+  opacity: 0.1;
+  width: 265px;
+  height: 1000px;
+  transform: rotate(-30deg);
+  margin-bottom: 20px;
+  transition: transform 1s;
+}
+
+/*EFECTO HOVER*/
+.caja3:hover:before,
+.caja3:hover:after {
+  background-color: rgb(177, 120, 177);
+  transform: rotate(0deg) scale(1.5);
+}
+/*CARACTERISTICAS DE CADA CAJA*/
+.caja4 {
+  display: flex;
+  background: rgb(212, 185, 27);
+
+  justify-content: center;
+  border: 2px solid white;
+  flex: 1 1 20%;
+  align-items: center;
+  position: relative;
+  /*overflow es para que las capas de after y before se recorten y queden contenidas dentro de la div correspondiente*/
+  overflow: hidden;
+  /*transition  permiten cambiar los valores de propiedad sin problemas, durante un período determinado.*/
+  transition: transform 1s;
+}
+
+/*LAYOUT AFTER Y BEFORE */
+
+.caja4::before {
+  /*La propiedad content tiene que estar siempre, para que los pseudoelementos sean visibles*/
+  content: "";
+  position: absolute;
+  background: rgb(228, 215, 141);
+  opacity: 0.1;
+  width: 265px;
+  height: 1000px;
+  transform: rotate(-30deg);
+  margin-bottom: 20px;
+  transition: transform 1s;
+}
+.caja4::after {
+  content: "";
+  position: absolute;
+  background: rgb(228, 215, 141);
+  opacity: 0.1;
+  width: 265px;
+  height: 1000px;
+  transform: rotate(-30deg);
+  margin-bottom: 20px;
+  transition: transform 1s;
+}
+
+/*EFECTO HOVER*/
+.caja4:hover:before,
+.caja4:hover:after {
+  background-color: rgb(228, 215, 141);
+  transform: rotate(0deg) scale(1.5);
+}
+/*CARACTERISTICAS DE CADA CAJA*/
+.caja5 {
+  display: flex;
+
+  background: rgb(226, 87, 87);
+
+  justify-content: center;
+  border: 2px solid white;
+  flex: 1 1 20%;
+  align-items: center;
+  position: relative;
+  /*overflow es para que las capas de after y before se recorten y queden contenidas dentro de la div correspondiente*/
+  overflow: hidden;
+  /*transition  permiten cambiar los valores de propiedad sin problemas, durante un período determinado.*/
+  transition: transform 1s;
+}
+
+/*LAYOUT AFTER Y BEFORE */
+
+.caja5::before {
+  /*La propiedad content tiene que estar siempre, para que los pseudoelementos sean visibles*/
+  content: "";
+  position: absolute;
+  background: rgb(233, 161, 161);
+  opacity: 0.1;
+  width: 265px;
+  height: 1000px;
+  transform: rotate(-30deg);
+  margin-bottom: 20px;
+  transition: transform 1s;
+}
+.caja5::after {
+  content: "";
+  position: absolute;
+  background: rgb(233, 161, 161);
+  opacity: 0.1;
+  width: 265px;
+  height: 1000px;
+  transform: rotate(-30deg);
+  margin-bottom: 20px;
+  transition: transform 1s;
+}
+
+/*EFECTO HOVER*/
+.caja5:hover:before,
+.caja5:hover:after {
+  background-color: rgb(233, 161, 161);
+  transform: rotate(0deg) scale(1.5);
+}
+
+/*Cambio tamaño de la etiqueta corazon de font awesome*/
+i {
+  font-size: 30px;
+}
+
+/*Pongo las caracteristicas de la etiqueta p en general*/
+p {
+  color: white;
+  font-size: 50px;
+  font-family:'Lora', serif, 'Open Sans', sans-serif, 'lato';
+}
